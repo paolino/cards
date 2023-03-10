@@ -68,4 +68,4 @@ main target what = do
     withHTTP req m $ \resp ->
         what $
             parseJson (arrayOf (value @Value)) $
-                Q.toChunks (responseBody resp)
+                Q.toChunks (responseBody resp) >> S.yield ""
